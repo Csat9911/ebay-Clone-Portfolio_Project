@@ -6,31 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Register</title>
-<link href="./css/Login.css" rel="stylesheet" type="text/css">
+<link href="./css/Register.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<!-- TODO: Use action="filename.jsp" to link front-end form submit to back-end -->
-	<!-- On button press from form submit whatever file is in the action will be invoked -->
-	<div class="page">
+	<!-- TODO: Use action="filename.jsp" to link front-end form submit to back-end see bardrinker example-->
+	<!-- On button press from form submit whatever file is in the action will be invoked a-->
 	 <div class="imgcontainer">
     	<img src="images/BuyMe-logos_transparent.png" alt="Avatar" class="avatar">
   	</div>
   	
 	<div class="Form_Layout">
-	<form method="post">
-		  <h1>Please Enter UserID and Password Below</h1>
+	<h2> Login Form </h2>
+	<form method="Post" action="#">
+		  <h1>Please Complete the Form Below to Register an Account</h1>
 		  <br>
+		  <label><b>Email Address</b></label>
+		  <br>
+		  <input class="textButton" type="text" name="Register-Email" placeholder="Email" required/>
+			<br>
+			<br>
 		  <label><b>UserID</b></label>
 		  <br>
-		  <input type="text" name="Login-UserID" placeholder="UserID" required/>
+		  <input class="textButton" type="text" name="Register-UserID" placeholder="UserID" required/>
+		  <br>
 		  <br>
 		  <label><b>Password</b></label>
 		  <br>
-		  <input type="text" name="Login-Password" placeholder="Password" required/>
-		  <br>
-		  <input class="button" type="submit" value="submit" />
+		  <input class="textButton" type="text" name="Register-Password" placeholder="Password" required/>
+			<br>
+			<br>
+		  <input class="submitButton" type="submit" value="Create Account" />
 		</form>
-	</div>
 	</div>
 </body>
 </html>
