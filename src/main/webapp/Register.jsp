@@ -17,7 +17,7 @@
   	
 	<div class="Form_Layout">
 	<h2> Register Form </h2>
-	<form method="Post" action="#">
+	<form method="Post" action="NewFile.jsp">
 		  <h1>Please Complete the Form Below to Register an Account</h1>
 		  <br>
 		  <label><b>Email Address</b></label>

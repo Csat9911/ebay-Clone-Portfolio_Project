@@ -17,7 +17,7 @@
   	
 	<div class="Form_Layout">
 	<h2> Login Form </h2>
-	<form method="Post" action="#">
+	<form method="Post" action="NewFile.jsp">
 		  <h1>Please Enter UserID and Password Below</h1>
 		  <label><b>UserID</b></label>
 		  <br>
