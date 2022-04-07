@@ -15,7 +15,7 @@
     	<img src="images/BuyMe-logos_transparent.png" alt="Avatar" class="avatar">
   	</div>
 	
-  	<a href = "http://localhost:8080/cs336Project/register.jsp">
+  	<a href = "http://localhost:8080/cs336Project/Register.jsp">
 			<button>Register</button>
 	</a>
 	
