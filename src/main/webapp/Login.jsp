@@ -14,7 +14,11 @@
 	 <div class="imgcontainer">
     	<img src="images/BuyMe-logos_transparent.png" alt="Avatar" class="avatar">
   	</div>
-  	
+	
+  	<a href = "http://localhost:8080/cs336Project/register.jsp">
+			<button>Register</button>
+	</a>
+	
 	<div class="Form_Layout">
 	<h2> Login Form </h2>
 	<form method="Post" action="NewFile.jsp">
