@@ -15,9 +15,6 @@
     	<img src="images/BuyMe-logos_transparent.png" alt="Avatar" class="avatar">
   	</div>
 	
-  	<a href = "http://localhost:8080/cs336Project(Group 14)/Register.jsp">
-			<button>Register</button>
-	</a>
 	
 	<div class="Form_Layout">
 	<h2> Login Form </h2>
@@ -35,6 +32,11 @@
 			<br>
 		  <input class="submitButton" type="submit" value="submit" />
 		</form>
+		<form>
+		<a href = "./register.jsp">
+		<input class="submitButton" type="button" value="register" />
+		</a>
+	</form>
 	</div>
 </body>
 </html>
