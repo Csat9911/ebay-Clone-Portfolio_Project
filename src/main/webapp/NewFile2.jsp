@@ -21,29 +21,36 @@
 		Statement stmt = con.createStatement();
 
 		//Get parameters from the HTML form at the index.jsp
-		String newEmail = request.getParameter("Register-Email");
-		String newUserID = request.getParameter("Register-UserID");
-		String newPassword = request.getParameter("Register-Password");
+		String newUserID = request.getParameter("Login-UserID");
+		String newPassword = request.getParameter("Login-Password");
 
 
+		
+		
 		//Make an insert statement for the Sells table:
-		String insert = "INSERT INTO endUsers(email,userID,password)"
-				+ "VALUES (?,?,?)";
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		PreparedStatement ps = con.prepareStatement(insert);
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself	
-		ps.setString(1, newEmail);
-		ps.setString(2, newUserID);
-		ps.setString(3, newPassword);
-		ps.executeUpdate();
+		//String str = "SELECT * FROM admin a WHERE a.adminID = " + "\""+ newUserID + "\"" + " AND a.password = " + "\"" + newPassword + "\"" + ";";
+	    String str2 = "SELECT * FROM endUsers e WHERE e.userID = " + "\""+ newUserID + "\"" + " AND e.password = " + "\"" + newPassword + "\"" + ";";
+		//String str3 = "SELECT * FROM customerReps c WHERE c.repID = " + "\""+ newUserID + "\"" + " AND c.password = " + "\"" + newPassword + "\"" + ";";
+		//Run the query against the database.
 
-		out.println("Thank you for registering ! Please <a href='Login.jsp'>Login</a> to continue.");
-				
+		ResultSet result = stmt.executeQuery(str2);
+
+		//ResultSet result3 = stmt.executeQuery(str3);
+		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+		if(result.next()){
+		session.setAttribute("userId", newUserID);
+		out.println("<a href='Account.jsp'>My Account</a>");
+		}
+		else {
+			out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+		}
+			//out.println("There was an error trying to Login to your account, Please Click Login To Try Again <a href='Login.jsp'>Login</a>");
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
 		
 	} catch (Exception ex) {
-		out.println("There was an error trying to create your account, Please Click Register To Try Again <a href='Register.jsp'>Register</a>");
+			out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+		
 	}
 %>
 </body>

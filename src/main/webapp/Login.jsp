@@ -18,7 +18,7 @@
 	
 	<div class="Form_Layout">
 	<h2> Login Form </h2>
-	<form method="Post" action="NewFile.jsp">
+	<form method="Post" action="NewFile2.jsp">
 		  <h1>Please Enter UserID and Password Below</h1>
 		  <label><b>UserID</b></label>
 		  <br>
@@ -33,7 +33,7 @@
 		  <input class="submitButton" type="submit" value="submit" />
 		</form>
 		<form>
-		<a href = "./register.jsp">
+		<a href = "./Register.jsp">
 		<input class="submitButton" type="button" value="register" />
 		</a>
 	</form>

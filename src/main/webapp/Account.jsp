@@ -18,9 +18,9 @@
 	
 	<div class="Form_Layout">
 	<h2> Account </h2>
-	<form method="Post" action="login.jsp">
+	<form method="Post" action="Login.jsp">
 		  <h1>
-		  	<%String name=request.getParameter("Login-UserID"); out.print("Welcome " + name + "!"); %>
+		  	<%String name=session.getAttribute("userId").toString(); out.print("Welcome " + name + "!"); %>
 		  </h1>
 		  
 		  <input class="submitButton" type="submit" value="logout" />

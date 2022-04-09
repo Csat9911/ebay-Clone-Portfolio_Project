@@ -35,7 +35,9 @@
 		  <input class="textButton" type="text" name="Register-Password" placeholder="Password" required/>
 			<br>
 			<br>
+		   <a href = "./Login.jsp">
 		  <input class="submitButton" type="submit" value="Create Account" />
+		  </a>
 		</form>
 	</div>
 </body>
