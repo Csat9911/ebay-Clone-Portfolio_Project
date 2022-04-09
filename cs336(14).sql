@@ -85,6 +85,7 @@ CREATE TABLE `endUsers` (
 
 LOCK TABLES `endUsers` WRITE;
 /*!40000 ALTER TABLE `endUsers` DISABLE KEYS */;
+INSERT INTO `endUsers` VALUES ('user@gmail.com','User1','group14');
 /*!40000 ALTER TABLE `endUsers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
