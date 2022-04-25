@@ -60,13 +60,7 @@
 					&& Integer.parseInt(result.getString("increment")) > 0 && Integer.parseInt(result.getString("upperLim")) > 0){
 				
 				int bidAmt = Integer.parseInt(result.getString("currMaxBid")) + Integer.parseInt(result.getString("increment"));
-			
-				out.print(Integer.parseInt(result.getString("currMaxBid")));
-				out.print("___");
-				out.print(Integer.parseInt(result.getString("increment")));
-				out.print("----");
-				out.print(bidAmt);
-				out.print("--0--");
+				
 				PreparedStatement maxUpdate = con.prepareStatement("UPDATE auctions set currMaxBid = ? where aucID = ?;");
 				maxUpdate.setInt(1,bidAmt);
 				maxUpdate.setInt(2, Integer.parseInt(result.getString("aucID")));
