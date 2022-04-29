@@ -33,10 +33,8 @@
 		  <input class="submitButton" type="submit" value="submit" />
 		</form>
 		<form>
-		<a href = "./Register.jsp">
+		<a href = "Register.jsp">
 		<input class="submitButton" type="button" value="register" />
 		</a>
 	</form>
 	</div>
-</body>
-</html>

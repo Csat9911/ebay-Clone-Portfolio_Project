@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+
+
 <!DOCTYPE html>
 <!-- This is the reference to the CSS style used for Login.jsp -->
 <html>
@@ -35,9 +39,7 @@
 		  <input class="textButton" type="text" name="Register-Password" placeholder="Password" required/>
 			<br>
 			<br>
-		   <a href = "./Login.jsp">
 		  <input class="submitButton" type="submit" value="Create Account" />
-		  </a>
 		</form>
 	</div>
 </body>

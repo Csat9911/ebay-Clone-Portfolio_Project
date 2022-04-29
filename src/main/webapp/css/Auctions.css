@@ -25,28 +25,7 @@ form {
 	border: 3px solid #f1f1f2;
 	}
 	
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
 	
-.textButton{
-    padding:5px; 
-    border:2px solid #ccc; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
-
-.textButton:focus{
-    border-color:#333;
-}
-
 .submitButton{
   background-color: #4CAF50; /* Green */
   border: none;
@@ -57,4 +36,5 @@ form {
   display: inline-block;
   border-radius:8px;
   font-size: 16px;
+  width: 1000px;
 }

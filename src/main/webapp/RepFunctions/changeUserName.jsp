@@ -10,56 +10,36 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div>
+Hello World</div>
 	<%
 	try {
 		//INSERT INTO `admin` VALUES ('adminUser1','adminPassWord!');
 		//Get the database connection
 		ApplicationConnection db = new ApplicationConnection();	
 		Connection con = db.getConnection();
-
+		String userName = request.getParameter("UserNameField"); 
+		String NewuserName = request.getParameter("New_Username"); 
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
-		Statement stmt1 = con.createStatement();
-		Statement stmt2 = con.createStatement();
-
-		//Get parameters from the HTML form at the index.jsp
-		String newUserID = request.getParameter("Login-UserID");
-		String newPassword = request.getParameter("Login-Password");
-
+		String str1 = "UPDATE endUsers e SET userID = " + "\"" + NewuserName + "\"" + " WHERE e.userID = " + "\"" + userName + "\"" + ";";
+		out.println(str1);
 		//Make an insert statement for the Sells table:
 		//String str = "SELECT * FROM admin a WHERE a.adminID = " + "\""+ newUserID + "\"" + " AND a.password = " + "\"" + newPassword + "\"" + ";";
-	    String str2 = "SELECT * FROM endUsers e WHERE e.userID = " + "\""+ newUserID + "\"" + " AND e.password = " + "\"" + newPassword + "\"" + ";";
+	    String str = "SELECT * FROM endUsers e WHERE e.userID = " + "\""+ userName + "\"" +";";
+	    out.println(str);
 		//String str3 = "SELECT * FROM customerReps c WHERE c.repID = " + "\""+ newUserID + "\"" + " AND c.password = " + "\"" + newPassword + "\"" + ";";
 		//Run the query against the database.
 
-		ResultSet result = stmt.executeQuery(str2);
+		ResultSet result = stmt.executeQuery(str);
 		
-		String str3 = "SELECT * FROM customerReps c WHERE c.repID = " + "\""+ newUserID + "\"" + " AND c.password = " + "\"" + newPassword + "\"" + ";";
-		
-		ResultSet result1 = stmt1.executeQuery(str3);
-
-		String str1 = "SELECT * FROM admin a WHERE a.adminID = " + "\""+ newUserID + "\"" + " AND a.password = " + "\"" + newPassword + "\"" + ";";
-		
-		ResultSet result2 = stmt2.executeQuery(str1);
-
 
 		if(result.next()){
-			session.setAttribute("userId", newUserID);
-			session.setAttribute("user-type", "endUser");
-			out.println("<a href='Account.jsp'>My Account</a>");
+			Statement stmt1 = con.createStatement();
+			stmt1.executeUpdate(str1);
+			
 		}
 
-		else if(result1.next()){
-			session.setAttribute("userId", newUserID);
-			session.setAttribute("user-type", "rep");
-		out.println("<a href='Account.jsp'>My Account</a>");
-		}
-
-		else if(result2.next()){
-			session.setAttribute("userId", newUserID);
-			session.setAttribute("user-type", "admin");
-		out.println("<a href='Account.jsp'>My Account</a>");
-		}
 		else {
 			out.println("Error");
 		}
