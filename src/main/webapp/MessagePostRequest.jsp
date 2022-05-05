@@ -20,34 +20,62 @@
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
 
-		
-		String name=session.getAttribute("userId").toString();
-		out.println(name);
-		String ogID=session.getAttribute("ogID").toString();
-		String newReply = request.getParameter("Reply-Area");
-		
-		String insert = "INSERT INTO MessageBoardReplies(repID, TimeStamp, MessageReply, OriginalQuestionID)"
-				+ "VALUES (?,?,?,?)";
-		
-		PreparedStatement ps = con.prepareStatement(insert);
-		Calendar calendar = Calendar.getInstance();
+		if (session.getAttribute("user-type").toString().equals("rep")){
+			String name=session.getAttribute("userId").toString();
+			out.println(name);
+			String ogID=session.getAttribute("ogID").toString();
+			String newReply = request.getParameter("Reply-Area");
+			
+			String insert = "INSERT INTO MessageBoardReplies(repID, TimeStamp, MessageReply, OriginalQuestionID)"
+					+ "VALUES (?,?,?,?)";
+			
+			PreparedStatement ps = con.prepareStatement(insert);
+			Calendar calendar = Calendar.getInstance();
 
-		// get a java date (java.util.Date) from the Calendar instance.
-		// this java date will represent the current date, or "now".
-		java.util.Date currentDate = calendar.getTime();
+			// get a java date (java.util.Date) from the Calendar instance.
+			// this java date will represent the current date, or "now".
+			java.util.Date currentDate = calendar.getTime();
 
-		// now, create a java.sql.Date from the java.util.Date
-		java.sql.Date date = new java.sql.Date(currentDate.getTime());
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself	
-		ps.setString(1, name);
-		ps.setDate(2, date);
-		
-		ps.setString(3, newReply);
-		ps.setString(4, ogID);
+			// now, create a java.sql.Date from the java.util.Date
+			java.sql.Date date = new java.sql.Date(currentDate.getTime());
+			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself	
+			ps.setString(1, name);
+			ps.setDate(2, date);
+			
+			ps.setString(3, newReply);
+			ps.setString(4, ogID);
 
-		
-		ps.executeUpdate();
+			
+			ps.executeUpdate();
 
+			
+		}
+			else{
+				//you are an end user
+				String name=session.getAttribute("userId").toString();
+				String newAsk = request.getParameter("Reply-Area");
+				
+				String insert = "INSERT INTO MessageBoard(userID, TimeStamp, Message)"
+						+ "VALUES (?,?,?)";
+				
+				PreparedStatement ps = con.prepareStatement(insert);
+				Calendar calendar = Calendar.getInstance();
+
+				// get a java date (java.util.Date) from the Calendar instance.
+				// this java date will represent the current date, or "now".
+				java.util.Date currentDate = calendar.getTime();
+
+				// now, create a java.sql.Date from the java.util.Date
+				java.sql.Date date = new java.sql.Date(currentDate.getTime());
+				//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself	
+				ps.setString(1, name);
+				ps.setDate(2, date);
+				ps.setString(3, newAsk);
+
+				
+				ps.executeUpdate();
+
+			}
 			//out.println("There was an error trying to Login to your account, Please Click Login To Try Again <a href='Login.jsp'>Login</a>");
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();

@@ -37,8 +37,9 @@
 		<%} %>
 		<% if(functionType.equals("Edit Email")) {%>
 			<div>
-				<form method="Post" action="EditAccount.jsp">
-				  	<input type="text" value = "" name="New_Email" placeholder="New Email"/>
+				<form method="Post" action="./RepFunctions/changeEmail.jsp">
+					<input type="text" name="EmailField" placeholder="Current Email" required/>
+				  	<input type="text" name="New_Email" placeholder="New Email" required/>
 					<input class="submitButton" type="submit" value="Submit Edit-Email Change" />
 				</form>
 			</div>

@@ -114,8 +114,8 @@ CREATE TABLE `auctions` (
   UNIQUE KEY `idx_auctions_aucID` (`aucID`),
   KEY `auctions_ibfk_1` (`userID`),
   KEY `auctions_ibfk_2` (`itemID`),
-  CONSTRAINT `auctions_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `endUsers` (`userID`) ON DELETE CASCADE,
-  CONSTRAINT `auctions_ibfk_2` FOREIGN KEY (`itemID`) REFERENCES `clothing` (`itemID`) ON DELETE CASCADE
+  CONSTRAINT `auctions_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `endUsers` (`userID`) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT `auctions_ibfk_2` FOREIGN KEY (`itemID`) REFERENCES `clothing` (`itemID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

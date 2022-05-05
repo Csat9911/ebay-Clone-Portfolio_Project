@@ -12,7 +12,10 @@
 </head>
 <body>
 	<% if (session.getAttribute("user-type").toString().equals("endUser")){%>
-		<input class="submitButton" type="submit" value="Post A Question" onclick="myFunction()">
+		<a id = "${s1}" href = "./MessageBoardPostEndUser.jsp">
+		  <input class="submitButton" type="submit" value="Post A Question" onclick="myFunction()">
+		</a>
+		
 	<%}%>
 	
 <%
@@ -105,7 +108,16 @@
     	
     	 <% for(int x = 0; x < ListMessageReply.size();x++){ %>
     	 	<% if (s1.equals(ListMessageReply.get(x).getogId())){%>
-    	 		<textarea class="repReply" cols= "50" rows= "5" disabled> <%= ListMessageReply.get(x).getMessage() %></textarea>
+    	 		<div >
+    	 			<br>
+    	 				<textarea class="repReply" cols= "50" rows= "5" disabled> <%= ListMessageReply.get(x).getMessage() %></textarea>
+    	 				<div class = "publisherReply">
+					    	<%= ListMessageReply.get(x).getUserID() %>
+					    	<br>
+					    	<%= ListMessageReply.get(x).getTimeStamp() %>
+					    </div>
+    	 			<br>
+    	 		</div>
     	<% } %>
     	<% } %>
     	</div>
