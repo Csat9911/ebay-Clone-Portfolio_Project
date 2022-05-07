@@ -20,19 +20,17 @@
 			Statement stmt = con.createStatement();
 
 			//Get parameters from the HTML form at the index.jsp
-			String newEmail = request.getParameter("Register-Email");
-			String newUserID = request.getParameter("Register-UserID");
+			String newRepID = request.getParameter("Register-repID");
 			String newPassword = request.getParameter("Register-Password");
 
 			//Make an insert statement for the Sells table:
-			String insert = "INSERT INTO customerReps(email,userID,password)"
+			String insert = "INSERT INTO customerReps(repID,password)"
 					+ "VALUES (?,?,?)";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself	
-			ps.setString(1, newEmail);
-			ps.setString(2, newUserID);
-			ps.setString(3, newPassword);
+			ps.setString(1, newRepID);
+			ps.setString(2, newPassword);
 			ps.executeUpdate();
 
 			out.println("Thank you for registering ! Please <a href='Login.jsp'>Login</a> to continue.");

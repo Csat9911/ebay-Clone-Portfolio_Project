@@ -14,16 +14,11 @@
 	<form method="Post" action="custRepAcctCreation.jsp">
 		<h1>Complete the form below to register a Customer Representative</h1>
 		<br>
-		<label><b>Email Address</b></label>
+		<label><b>repID</b></label>
 		<br>
-		<input class="textButton" type="text" name="Register-Email" placeholder="Email" required/>
+		<input class="textButton" type="text" name="Register-repID" placeholder="RepID" required/>
 			<br>
 			<br>
-		<label><b>UserID</b></label>
-		<br>
-		<input class="textButton" type="text" name="Register-UserID" placeholder="UserID" required/>
-		<br>
-		<br>
 		<label><b>Password</b></label>
 		<br>
 		<input class="textButton" type="text" name="Register-Password" placeholder="Password" required/>
