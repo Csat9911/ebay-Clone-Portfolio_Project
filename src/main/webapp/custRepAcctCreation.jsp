@@ -23,8 +23,6 @@
 			String newEmail = request.getParameter("Register-Email");
 			String newUserID = request.getParameter("Register-UserID");
 			String newPassword = request.getParameter("Register-Password");
-			if(){
-			}
 
 			//Make an insert statement for the Sells table:
 			String insert = "INSERT INTO customerReps(email,userID,password)"
