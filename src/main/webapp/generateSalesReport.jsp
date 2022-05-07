@@ -14,7 +14,7 @@
 <% try {
 	
 			//Get the database connection
-			ApplicationDB db = new ApplicationDB();	
+			ApplicationConnection db = new ApplicationConnection();	
 			Connection con = db.getConnection();		
 
 			//Create a SQL statement
@@ -22,7 +22,7 @@
 			//Get the selected radio button from the index.jsp
 			String entity = request.getParameter("command");
 			if(entity.equals("total earnings")){
-				PreparedStatement str = con.prepareStatement("SELECT SUM(currMaxBid) AS total FROM auctions WHERE closeDateTime < NOW() AND currMaxBid >= secretMin");
+				String str = "SELECT SUM(currMaxBid) AS total FROM auctions WHERE closeDateTime < NOW() AND currMaxBid >= secretMin";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("total");
 
@@ -30,7 +30,7 @@
 			db.closeConnection(con);
 			}
 			else if(entity.equals("earnings per item")){
-				PreparedStatement str = con.prepareStatement("SELECT c.itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC");
+				String str = "SELECT c.itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 
@@ -70,7 +70,7 @@
 			db.closeConnection(con);
 			}
 			else if(entity.equals("earnings per item type")){
-				PreparedStatement str = con.prepareStatement("SELECT c.category, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY category ORDER BY earnings DESC");
+				String str = "SELECT c.category, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY category ORDER BY earnings DESC";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 
@@ -110,7 +110,7 @@
 			db.closeConnection(con);
 			}
 			else if(entity.equals("earnings per end-user")){
-				PreparedStatement str = con.prepareStatement("SELECT e.userID AS userID, SUM(a.currMaxBid) AS earnings FROM endUsers e, auctions a WHERE e.userID = a.userID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY userID ORDER BY earnings DESC");
+				String str = "SELECT e.userID AS userID, SUM(a.currMaxBid) AS earnings FROM endUsers e, auctions a WHERE e.userID = a.userID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY userID ORDER BY earnings DESC";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 
@@ -150,7 +150,7 @@
 			db.closeConnection(con);
 			}
 			else if(entity.equals("best-selling items")){
-				PreparedStatement str = con.prepareStatement("SELECT c.itemID AS itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC LIMIT 5");
+				String str = "SELECT c.itemID AS itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC LIMIT 5";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 
@@ -189,7 +189,7 @@
 			//close the connection.
 			db.closeConnection(con);
 			}else{
-				PreparedStatement str = con.prepareStatement("SELECT b.userID, SUM(a.currMaxBid) AS money FROM bids b, auctions a WHERE b.aucID = a.aucID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC LIMIT 5");
+				String str = "SELECT b.userID, SUM(a.currMaxBid) AS money FROM bids b, auctions a WHERE b.aucID = a.aucID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC LIMIT 5";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 
