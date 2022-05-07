@@ -48,6 +48,12 @@
 		<a href = "./repAccountManagement.jsp">
 		  <input class="submitButton" type="submit" value="Edit/Delete End_Users"/>
 		</a>
+		<a href = "./repBids.jsp">
+		  <input class="submitButton" type="submit" value="Remove Bids"/>
+		</a>
+		<a href = "./repAuctions.jsp">
+		  <input class="submitButton" type="submit" value="Remove Auctions"/>
+		</a>
 	<%} %>
 	</div>
 	<%try{ 
