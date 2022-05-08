@@ -41,8 +41,8 @@
 	%>
 	<% while (result.next()){ %>
 	<form method="Post" action="MessageBoard.jsp">
-	<input class="submitButton" type="submit" value=<%=result.getString("MessageID") + "--"+ result.getString("userID") +"--" + result.getString("TimeStamp")+"--"+ result.getString("Message")%> 
-	name="MessageID" />
+	<input class="submitButton" type="submit" value=<%=result.getString("Message")%> 
+	name="Message" />
 	
 	<br>
   	<br>
