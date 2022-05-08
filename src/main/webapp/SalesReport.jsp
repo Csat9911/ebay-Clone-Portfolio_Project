@@ -9,6 +9,7 @@
 <title>Generate Sales Report</title>
 </head>
 <body>
+	Generate Sales Report for:
 	<br>
 	<form method="post" action="generateSalesReport.jsp">
 		<input type="radio" name="command" value="total earnings"/>Total earnings
