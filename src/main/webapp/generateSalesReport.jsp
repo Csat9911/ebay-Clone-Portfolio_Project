@@ -25,7 +25,24 @@
 			if(entity.equals("total earnings")){
 				String str = "SELECT SUM(a.currMaxBID) AS earnings FROM auctions a WHERE a.currMaxBid >= a.secretMin AND a.closeDateTime <= NOW()";
 				ResultSet result = stmt.executeQuery(str);
+				out.print("<tr>");
+				//make a column
+				out.print("<td>");
+				//print out column header
 				out.print("earnings");
+				out.print("</td>");
+				out.print("</tr>");
+				//parse out the results
+				while (result.next()) {
+					//make a row
+					out.print("<tr>");
+					//make a column
+					out.print("<td>");
+					//Print out current bar or beer name:
+					out.print(result.getString("earnings"));
+					out.print("</td>");
+					out.print("<td>");
+					out.print("<tr>");
 				%>
 				<a href = "./SalesReport.jsp">
 				<input class="submitButton" type="button" value="Back To Sales Report" />
