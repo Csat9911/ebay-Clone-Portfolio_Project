@@ -23,7 +23,9 @@ String aucID = request.getParameter("AucID");
 Statement stmt = con.createStatement();
 
 
-String str = "DELETE FROM Auctions a WHERE a.aucID = " + "\""+ aucID + "\"" +";";
+String str = "DELETE FROM auctions a WHERE a.aucID = " + "\""+ aucID + "\"" +";";
+
+out.println(str);
 //Run the query against the database.
 stmt.executeUpdate(str);
 
@@ -36,8 +38,7 @@ con.close();
 	
 }
 catch (SQLException e){
-	String redirectURL = "../Account.jsp";
-    response.sendRedirect(redirectURL);
+	out.println("error");
 }
 
 %>

@@ -16,5 +16,9 @@
 			<input class="textButton" type="text" name="Bid_userName" placeholder="User-ID" required/>
 			<input name = "button1" class="submitButton" type="submit" placeholder = "Find User's Bids">
 		</form>
+		<br>
+		<a href = "./Account.jsp">
+			<input name = "button1" class="submitButton" value="Back To Account Page" type="submit"> 
+		</a>
 </body>
 </html>

@@ -71,6 +71,10 @@
     	</div>
 		<br>
   	<% } %>
+  	<br>
+		<a href = "../Account.jsp">
+			<input name = "button1" class="submitButton" value="Back To Account Page" type="submit"> 
+		</a>
   	</div>
 	
 </body>

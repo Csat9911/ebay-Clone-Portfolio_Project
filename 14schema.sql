@@ -147,7 +147,7 @@ CREATE TABLE `bids` (
   PRIMARY KEY (`bidID`),
   KEY `aucID` (`aucID`),
   KEY `userID` (`userID`),
-  CONSTRAINT `bids_ibfk_1` FOREIGN KEY (`aucID`) REFERENCES `auctions` (`aucID`)
+  CONSTRAINT `bids_ibfk_1` FOREIGN KEY (`aucID`) REFERENCES `auctions` (`aucID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

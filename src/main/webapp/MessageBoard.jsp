@@ -81,8 +81,12 @@
 			//close the connection.
 			
 			con.close();
-
-		} catch (Exception e) {
+			
+		} catch (SQLException e) {
+				//out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+			String redirectURL = "./ErrorPage.jsp";
+			response.sendRedirect(redirectURL);
+			
 		}
 	%>
 	<div class = "MessageHome">
@@ -122,6 +126,10 @@
     	<% } %>
     	</div>
   	<% } %>
+  	<br>
+		<a href = "./Account.jsp">
+			<input name = "button1" class="submitButton" value="Back To Account Page" type="submit"> 
+		</a>
   	</div>
 	
 </body>

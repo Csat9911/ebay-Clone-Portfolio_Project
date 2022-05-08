@@ -29,14 +29,14 @@ stmt.executeUpdate(str);
 
 con.close();
 
-	String redirectURL = "../Account.jsp";
-	response.sendRedirect(redirectURL);
-	
-}
-catch (SQLException e){
-	String bidID = request.getParameter("BidID");
-	out.println(bidID);
-	out.println("error");
+String redirectURL = "../Account.jsp";
+response.sendRedirect(redirectURL);
+
+} catch (SQLException e) {
+	//out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+String redirectURL = "../ErrorPage.jsp";
+response.sendRedirect(redirectURL);
+
 }
 
 %>

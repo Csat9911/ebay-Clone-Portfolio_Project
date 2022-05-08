@@ -45,6 +45,18 @@
 			</div>
 		
 		<%} %>
+		<% if(functionType.equals("Delete A User")) {%>
+			<div>
+				<form method="Post" action="./RepFunctions/deleteUser.jsp">
+				  	<input type="text" name="User_Name" placeholder="User-Name" required/>
+					<input class="submitButton" type="submit" value="Submit Delete User" />
+				</form>
+			</div>
+		<%} %>
+		<br>
+		<a href = "./Account.jsp">
+			<input name = "button1" class="submitButton" value="Back To Account Page" type="submit"> 
+		</a>
 
 </body>
 </html>

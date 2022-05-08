@@ -33,13 +33,8 @@
 		if(result.next()){
 			Statement stmt1 = con.createStatement();
 			stmt1.executeUpdate(str1);
-			String redirectURL = "../Account.jsp";
-		    response.sendRedirect(redirectURL);
 		}
 
-		else {
-			 out.println("<p style='color:red;'>User or password incorrect!</p>");
-		}
 
 			//out.println("There was an error trying to Login to your account, Please Click Login To Try Again <a href='Login.jsp'>Login</a>");
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
@@ -49,7 +44,6 @@
 	    response.sendRedirect(redirectURL);
 		
 	} catch (SQLException e) {
-			//out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
 		 String redirectURL = "../Account.jsp";
 		 response.sendRedirect(redirectURL);
 		
