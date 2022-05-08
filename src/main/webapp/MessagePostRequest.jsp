@@ -80,8 +80,15 @@
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
 		
-	 } catch( SQLException e ){
-        e.printStackTrace();}
+		String redirectURL = "./MessageBoard.jsp";
+		response.sendRedirect(redirectURL);
+		
+	} catch (SQLException e) {
+			//out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+		String redirectURL = "./ErrorPage.jsp";
+		response.sendRedirect(redirectURL);
+		
+	}
 %>
 </body>
 </html>

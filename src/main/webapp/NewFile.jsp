@@ -36,9 +36,15 @@
 				
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
+				
+		String redirectURL = "./Login.jsp";
+		response.sendRedirect(redirectURL);
 		
-	} catch (Exception ex) {
-		out.println("There was an error trying to create your account, Please Click Register To Try Again <a href='Register.jsp'>Register</a>");
+	} catch (SQLException e) {
+			//out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+		String redirectURL = "./ErrorPage.jsp";
+		response.sendRedirect(redirectURL);
+		
 	}
 %>
 </body>

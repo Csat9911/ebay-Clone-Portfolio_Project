@@ -55,7 +55,11 @@
 		  <input class="submitButton" type="submit" value="Remove Auctions"/>
 		</a>
 	<%} %>
-	</div>
+	<%if(session.getAttribute("user-type").toString().equals("admin")){  %>
+		<a href = "./adminOptions.jsp">
+		  <input class="submitButton" type="submit" value="Admin Options"/>
+		</a>
+		<%} %>
 	<%try{ 
 		
 		ApplicationConnection db = new ApplicationConnection();
@@ -103,7 +107,6 @@
 				newBid.executeUpdate();
 				
 				
-
 			}
 		}
 		con.close();
@@ -119,7 +122,4 @@
 </body>
 
 </html>
-
-
-
 

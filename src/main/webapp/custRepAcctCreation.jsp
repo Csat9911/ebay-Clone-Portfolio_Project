@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,6 +10,7 @@
 </head>
 <body>
 	<%
+	try{
 	//INSERT INTO `admin` VALUES ('adminUser1','adminPassWord!');
 			//Get the database connection
 			ApplicationConnection db = new ApplicationConnection();	
@@ -17,18 +18,16 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get parameters from the HTML form at the index.jsp
-			String newEmail = request.getParameter("Register-Email");
-			String newUserID = request.getParameter("Register-UserID");
+			String newRepID = request.getParameter("Register-repID");
 			String newPassword = request.getParameter("Register-Password");
 			//Make an insert statement for the Sells table:
-			String insert = "INSERT INTO customerReps(email,userID,password)"
-					+ "VALUES (?,?,?)";
+			String insert = "INSERT INTO customerReps(repID,password)"
+					+ "VALUES (?,?)";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself	
-			ps.setString(1, newEmail);
-			ps.setString(2, newUserID);
-			ps.setString(3, newPassword);
+			ps.setString(1, newRepID);
+			ps.setString(2, newPassword);
 			ps.executeUpdate();
 			out.println("Thank you for registering ! Please <a href='Login.jsp'>Login</a> to continue.");
 					

@@ -9,6 +9,7 @@
 <title>Generate Sales Report</title>
 </head>
 <body>
+	Generate Sales Report for:
 	<br>
 	<form method="post" action="generateSalesReport.jsp">
 		<input type="radio" name="command" value="total earnings"/>Total earnings
@@ -26,5 +27,8 @@
 		<input type="submit" value="submit"/>
 	</form>
 	<br>
+		<a href = "./Account.jsp">
+			<input name = "button1" class="submitButton" value="Back To Account Page" type="submit"> 
+		</a>
 </body>
 </html>

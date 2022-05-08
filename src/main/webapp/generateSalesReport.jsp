@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <% try {
 	
 			//Get the database connection
@@ -21,14 +22,38 @@
 			//Get the selected radio button from the index.jsp
 			String entity = request.getParameter("command");
 			if(entity.equals("total earnings")){
-				String str = "SELECT SUM(currMaxBid) AS total FROM auctions WHERE closeDateTime < NOW() AND currMaxBid >= secretMin";
+				String str = "SELECT SUM(a.currMaxBID) AS earnings FROM auctions a WHERE a.currMaxBid >= a.secretMin AND a.closeDateTime <= NOW()";
 				ResultSet result = stmt.executeQuery(str);
-				out.print("total");
+				out.print("<tr>");
+				//make a column
+				out.print("<td>");
+				//print out column header
+				out.print("Total Earnings -> ");
+				out.println("");
+				out.print("</td>");
+				out.print("</tr>");
+				//parse out the results
+				while (result.next()) {
+					//make a row
+					out.print("<tr>");
+					//make a column
+					out.print("<td>");
+					//Print out current bar or beer name:
+					out.print(result.getString("earnings"));
+					out.print("</td>");
+					out.print("<td>");
+					out.print("<tr>");
+				}
+				%>
+				<a href = "./SalesReport.jsp">
+				<input class="submitButton" type="button" value="Back To Sales Report" />
+				</a>
+			<% 
 			//close the connection.
 			db.closeConnection(con);
-			}
+			 }
 			else if(entity.equals("earnings per item")){
-				String str = "SELECT c.itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC";
+				String str = "SELECT c.itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY itemID ORDER BY earnings DESC";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 			//make a row
@@ -60,6 +85,11 @@
 				out.print("</tr>");
 			}
 			out.print("</table>");
+			%>
+			<a href = "./SalesReport.jsp">
+			<input class="submitButton" type="button" value="Back To Sales Report" />
+			</a>
+		<% 
 			//close the connection.
 			db.closeConnection(con);
 			}
@@ -72,7 +102,7 @@
 			//make a column
 			out.print("<td>");
 			//print out column header
-			out.print("category");
+			out.print("item type");
 			out.print("</td>");
 			//make a column
 			out.print("<td>");
@@ -96,6 +126,11 @@
 				out.print("</tr>");
 			}
 			out.print("</table>");
+			%>
+			<a href = "./SalesReport.jsp">
+			<input class="submitButton" type="button" value="Back To Sales Report" />
+			</a>
+		<% 
 			//close the connection.
 			db.closeConnection(con);
 			}
@@ -132,11 +167,16 @@
 				out.print("</tr>");
 			}
 			out.print("</table>");
+			%>
+			<a href = "./SalesReport.jsp">
+			<input class="submitButton" type="button" value="Back To Sales Report" />
+			</a>
+		<% 
 			//close the connection.
 			db.closeConnection(con);
 			}
 			else if(entity.equals("best-selling items")){
-				String str = "SELECT c.itemID AS itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC LIMIT 5";
+				String str = "SELECT c.itemID, SUM(a.currMaxBid) AS earnings FROM clothing c, auctions a WHERE c.itemID = a.itemID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY itemID ORDER BY earnings DESC LIMIT 5";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 			//make a row
@@ -168,10 +208,15 @@
 				out.print("</tr>");
 			}
 			out.print("</table>");
+			%>
+			<a href = "./SalesReport.jsp">
+			<input class="submitButton" type="button" value="Back To Sales Report" />
+			</a>
+		<% 
 			//close the connection.
 			db.closeConnection(con);
 			}else{
-				String str = "SELECT b.userID, SUM(a.currMaxBid) AS money FROM bids b, auctions a WHERE b.aucID = a.aucID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin ORDER BY earnings DESC LIMIT 5";
+				String str = "SELECT e.userID, SUM(a.currMaxBid) AS money FROM auctions a, endusers e WHERE e.userID = a.userID AND a.closeDateTime < NOW() AND a.currMaxBid >= a.secretMin GROUP BY userID ORDER BY money DESC LIMIT 5";
 				ResultSet result = stmt.executeQuery(str);
 				out.print("<table>");
 			//make a row
@@ -203,11 +248,18 @@
 				out.print("</tr>");
 			}
 			out.print("</table>");
-			//close the connection.
+			%>
+	<a href = "./SalesReport.jsp">
+	<input class="submitButton" type="button" value="Back To Sales Report" />
+	</a>
+	<%
 			db.closeConnection(con);
-		}
+		
 			
-	 }catch(Exception e){
+			
+	 }
+}
+	catch(Exception e){
 			out.print(e);
 			}%>
 </body>

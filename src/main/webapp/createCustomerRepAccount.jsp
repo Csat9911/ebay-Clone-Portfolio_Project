@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="java.io.*,java.util.*,java.lang.*, java.sql.*" %>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,16 +14,11 @@
 	<form method="Post" action="custRepAcctCreation.jsp">
 		<h1>Complete the form below to register a Customer Representative</h1>
 		<br>
-		<label><b>Email Address</b></label>
+		<label><b>repID</b></label>
 		<br>
-		<input class="textButton" type="text" name="Register-Email" placeholder="Email" required/>
+		<input class="textButton" type="text" name="Register-repID" placeholder="RepID" required/>
 			<br>
 			<br>
-		<label><b>UserID</b></label>
-		<br>
-		<input class="textButton" type="text" name="Register-UserID" placeholder="UserID" required/>
-		<br>
-		<br>
 		<label><b>Password</b></label>
 		<br>
 		<input class="textButton" type="text" name="Register-Password" placeholder="Password" required/>
@@ -31,6 +26,10 @@
 			<br>
 		<input class="submitButton" type="submit" value="Create Account" />
 	</form>
+	<br>
+		<a href = "./Account.jsp">
+			<input name = "button1" class="submitButton" value="Back To Account Page" type="submit"> 
+		</a>
 	</div>
 </body>
 </html>
