@@ -31,7 +31,7 @@
 		String TimeStamp = request.getParameter("TimeStamp");
 		String Message = request.getParameter("Message");
 		PreparedStatement str = 
-		con.prepareStatement("SELECT m.MessageID, m.userID, m.TimeStamp, m.Message FROM messageboard m WHERE CONTAINS (m.Message,?) ORDER BY m.TimeStamp desc;");
+		con.prepareStatement("SELECT m.MessageID, m.userID, m.TimeStamp, m.Message FROM messageboard m WHERE CONTAINS (m.Message,?) AND m.MessageID = ? AND m.userID = ? AND m.TimeStamp = ? ORDER BY m.TimeStamp desc;");
 		str.setString(1, MessageID);
 		str.setString(2, userID);
 		str.setString(3,TimeStamp);
@@ -41,11 +41,12 @@
 	%>
 	<% while (result.next()){ %>
 	<form method="Post" action="MessageBoard.jsp">
-	<input class="submitButton" type="submit" value=<%=result.getString("Message")%> 
+	<input class="submitButton" type="submit" value=<%=result.getString("MessageID")+ "--"+ result.getString("userID")+ "--"+ result.getString("TimeStamp")+ "--"+ result.getString("Message")%> 
 	name="Message" />
 	
 	<br>
   	<br>
+  	
   	
 	<%}
 		db.closeConnection(con);
