@@ -18,45 +18,59 @@
   	</div>
   	<br>
   	<br>
-  	<h2>Click to Search Message Board</h2>
-	<h3>MessageID, userID, TimeStamp, Message</h3>
-	<%try {
-		//Get the database connection
-		ApplicationConnection db = new ApplicationConnection();	
-		Connection con = db.getConnection();	
-		//Create a SQL statement
-		Statement stmt = con.createStatement();
-		String MessageID = request.getParameter("MessageID") ;
-		String userID =  request.getParameter("userID");
-		String TimeStamp = request.getParameter("TimeStamp");
-		String Message = request.getParameter("Message");
-		PreparedStatement str = 
-		con.prepareStatement("SELECT m.MessageID, m.userID, m.TimeStamp, m.Message FROM messageboard m WHERE CONTAINS (m.Message,?) AND m.MessageID = ? AND m.userID = ? AND m.TimeStamp = ? ORDER BY m.TimeStamp desc;");
-		str.setString(1, MessageID);
-		str.setString(2, userID);
-		str.setString(3,TimeStamp);
-		str.setString(4, Message);
-		ResultSet result = str.executeQuery();
-	
+	<%
+		List<String> ListMessage = new ArrayList<String>();
+		
+		String Keyword = session.getAttribute("search").toString();
+
+		try {
+			ApplicationConnection db = new ApplicationConnection();	
+			Connection con = db.getConnection();	
+			
+			//Create a SQL statement
+			Statement stmt = con.createStatement();
+			//Get the combobox from the index.jsp
+			//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
+			String str = "SELECT * FROM MessageBoard WHERE m.message LIKE " + """ + Keyword + """ + ";";;
+			//Run the query against the database.
+			ResultSet result = stmt.executeQuery(str);
+			
+			//parse out the results
+			while (result.next()) {
+				
+				String message = result.getString("Message");
+				
+				ListMessage.add(message);
+
+			}			
+			//close the connection.
+			
+			con.close();
+			
+		} catch (SQLException e) {
+				//out.print("Error trying to Login try again <a href='Account.jsp'>My Account</a>");
+			String redirectURL = "./ErrorPage.jsp";
+			response.sendRedirect(redirectURL);
+			
+		}
 	%>
-	<% while (result.next()){ %>
-	<form method="Post" action="MessageBoard.jsp">
-	<input class="submitButton" type="submit" value=<%=result.getString("MessageID")+ "--"+ result.getString("userID")+ "--"+ result.getString("TimeStamp")+ "--"+ result.getString("Message")%> 
-	name="Message" />
+	<% for(int i = 0; i < ListMessage.size();i++){ %>
+    	<div class = "MessageContent">
+    	    		
+    	<%} %>
+    	<textarea class="userInput" cols= "50" rows= "5" disabled> <%= ListMessage.get(i) %></textarea>
+
+    	</div>
+  	<% } %>
 	
-	<br>
-  	<br>
-  	
-  	
-	<%}
-		db.closeConnection(con);
-		%>
+	
+
+	
+	<a href = "./MessageBoard.jsp">
+	<input class="submitButton" type="button" value="Back To Message Boards" />
+	</a>
 	</form>
-	<%}
-	catch(Exception e){
-		out.print(e);
-	}
-	%>
+	</div>
 
 </body>
 </html>
